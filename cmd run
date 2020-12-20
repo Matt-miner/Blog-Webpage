@@ -1,0 +1,77 @@
+set FLASK_APP= flaskblog.py
+flask run
+
+set FLASK_DEBUG=1
+flask run  
+Running using flask documentation////////
+
+
+Run directly
+go to folder cd <folder name>
+flaskblog.py
+
+
+{%for post in posts%}
+       <h1>{{post.title}}</h1>
+       <p>By {{post.author}} on {{post.date_posted}}</p>
+       <p>{{post.content}}</p>
+    {%endfor%}
+
+    app.config['SECRET KEY'] = ''
+
+
+
+    #in the login route before database
+    if form.validate_on_submit():
+        if form.email.data == 'admin@blog.com' and form.password.data == 'password':
+            flash('You have been logged in!', 'success')
+            return redirect(url_for('home'))
+        else:
+
+
+        if current_user.is_authenticated:
+        return redirect(url_for('home'))
+
+
+        
+    form = LoginForm()
+    user = User.query.filter_by(email = form.email.data).first()
+    if user and bcrypt.check_password_hash(user.password, form.password.data):
+         login_user(user, remember= form.remember.data)
+         next_page = request.args.get('next')
+         return redirect(next_page) if next_page else redirect(url_for('home'))
+
+    else:
+          flash('Login Unsuccessful. Please check username and password', 'danger')
+
+
+    
+    return render_template('login.html', title='Login', form=form)
+
+    # on routes page
+    posts = [
+    {
+        'author': 'Corey Schafer',
+        'title': 'Blog Post 1',
+        'content': 'First post content',
+        'date_posted': 'April 20, 2018'
+    },
+    {
+        'author': 'Jane Doe',
+        'title': 'Blog Post 2',
+        'content': 'Second post content',
+        'date_posted': 'April 21, 2018'
+    }
+]
+#on home page
+ <article class="media content-section">
+	  <div class="media-body">
+	    <div class="article-metadata">
+	      <a class="mr-2" href="#">{{ post.author }}</a>
+	      <small class="text-muted">{{ post.date_posted }}</small>
+	    </div>
+	    <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+	    <p class="article-content">{{ post.content }}</p>
+	  </div>
+	</article>
+

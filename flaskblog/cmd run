@@ -1,0 +1,11 @@
+set FLASK_APP= flaskblog.py
+flask run
+
+set FLASK_DEBUG=1
+flask run  
+Running using flask documentation////////
+
+
+Run directly
+go to folder cd <folder name>
+flaskblog.py
